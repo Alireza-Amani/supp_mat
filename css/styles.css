@@ -36,11 +36,13 @@ section p {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  
 }
 
-#second_section {
-  height: 100vh;
+#section_separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #data_and_button {
@@ -56,8 +58,6 @@ section p {
   border-color: transparent;
   /* border: 0; */
 }
-
-
 
 .material-icons {
   font-size: 64px;

@@ -68,12 +68,14 @@ promise_1.then(() => {
   layout = {
     title: false,
     autosize: true,
+    // height: 1000, 
+    // width: 1000,
     margin: {
       l: 5,
       r: 5,
       b: 0,
       t: 0,
-      pad: 5
+      pad: 4
      
     }, 
     // paper_bgcolor: "#000000",
