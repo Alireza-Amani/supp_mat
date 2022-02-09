@@ -1,0 +1,70 @@
+body {
+  background-color: black;
+  font-size: 2vw;
+  color: white;
+}
+
+li a span {
+  padding: 0.5vw;
+  font-size: 1.5vw;
+  text-align: center;
+}
+
+.nav-item {
+  text-align: center;
+}
+
+#hr_title {
+  border-style: dotted none none;
+  border-width: 0.5vh;
+  border-color: white;
+  width: 50%;
+  margin: auto;
+  opacity: 50%;
+  background-color: black;
+}
+
+section.container {
+  margin-top: 2vw;
+}
+section p {
+  font-size: 1vw;
+}
+
+#map_plotly {
+  height: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#second_section {
+  height: 100vh;
+}
+
+#data_and_button {
+  position: relative;
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#data_and_button button {
+  background-color: transparent;
+  border-color: transparent;
+  /* border: 0; */
+}
+
+
+
+.material-icons {
+  font-size: 64px;
+}
+
+@media (max-width: 991px) {
+  li a span {
+    font-size: 3vw;
+  }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supplementary materials for the evapotranspiration paper</title>
+    <meta
+      name="description"
+      content="Supplementary materials for 'Assessing the generalization
+    power of three machine learning models and three evapotranspiration formulas
+    using 143 FLUXNET towers data'"
+    />
+    <meta name="author" content="Alireza Amani" />
+
+    <!-- icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- scripts -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- <script src="https://cdn.plot.ly/plotly-2.8.3.min.js"></script> -->
+    <script src="js/plotly-2.8.3.min.js"></script>
+    <script src="js/jquery.csv.min.js"></script>
+    <script src="js/ajax-utils.js"></script>
+    <script src="js/papaparse.min.js"></script>
+
+    <script src="js/myplots.js"></script>
+    <script src="js/script.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <button
+            class="navbar-toggler ms-auto"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbar_list"
+            aria-controls="navbar_list"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbar_list">
+            <ul class="navbar-nav me-auto mb-2">
+              <li class="nav-item">
+                <a href="#" class="nav-link active" aria-current="page"
+                  ><span>Home</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link active" aria-current="page"
+                  ><span>Input Variables</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        <h1 id="paper_title" class="text-center fst-bold mt-5">
+          Supplementary materials for
+          <span class="fst-italic"
+            >'Assessing the generalization power of three machine learning
+            models and three evapotranspiration formulas using 143 FLUXNET
+            towers data'</span
+          >
+        </h1>
+        <hr class="mt-5" id="hr_title" />
+
+        <div class="container" id="data_and_button">
+          <button
+            class="btn btn-primary me-4"
+            id="data_show_button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#data_section"
+            aria-hidden="false"
+            aria-controls="data_section"
+          >
+            <span class="material-icons">expand_more</span>
+          </button>
+          <h1 class="text-center my-5">S1. Data</h1>
+        </div>
+
+        <section class="collapse container" id="data_section">
+          <p class="mt-5">
+            Location of each FLUXNET site used in this study is shown in the
+            figure below.
+          </p>
+          <div id="map_plotly" class="mt-5"></div>
+        </section>
+
+        <section class="container" id="second_section">
+          <p id="content"></p>
+        </section>
+      </div>
+    </main>
+    <script>
+      // let map_data = Papa.parse(csvfile);
+    </script>
+  </body>
+</html>
