@@ -83,34 +83,35 @@
           <span class="material-icons">more_horiz</span>
         </div>
 
-        <div class="container" id="data_and_button">
-          <button
-            class="btn btn-primary me-4"
-            id="data_show_button"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#data_section"
-            aria-hidden="false"
-            aria-controls="data_section"
-          >
-            <span class="material-icons">expand_more</span>
-          </button>
-          <h1 class="text-center my-5">S1. Data</h1>
-        </div>
+        <div class="container" id="data_complete">
+          <div class="container" id="data_and_button">
+            <button
+              class="btn btn-primary me-4"
+              id="data_show_button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#data_section"
+              aria-hidden="false"
+              aria-controls="data_section"
+            >
+              <span class="material-icons">expand_more</span>
+            </button>
+            <h1 class="text-center my-5">S1. Data</h1>
+          </div>
 
-        <section class="collapse container" id="data_section">
-          <p class="mt-5">
-            Location of each FLUXNET site used in this study is shown in the
-            figure below.
-          </p>
-          <div id="map_plotly" class="mt-5"></div>
-        </section>
+          <section class="collapse container" id="data_section">
+            <p class="mt-5">
+              Location of each FLUXNET site used in this study is shown in the
+              figure below.
+            </p>
+            <div id="map_plotly" class="mt-5"></div>
+          </section>
+        </div>
 
         <div class="container my-5" id="section_separator">
           <span class="material-icons">more_horiz</span>
         </div>
         <h1 class="text-center my-5">S2. Input Variables</h1>
-
       </div>
     </main>
     <script>
