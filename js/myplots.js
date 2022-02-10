@@ -1,9 +1,15 @@
 let csvstring = "";
-let csv_path = "datasets/sites_info.csv";
+let csv_path = "datasets/sites_info.json";
 let map_data = Array();
 let lats = Array();
 let longs = Array();
 let site_id = Array();
+let site_days = Array();
+let site_climate = Array();
+let custom_data = { days: site_days };
+let a1 = 2;
+
+// variables for plotly
 let data = Array();
 let layout = {};
 
@@ -15,21 +21,15 @@ let promise_1 = new Promise((resolve, reject) => {
 });
 
 promise_1.then(() => {
-  console.log(csvstring.length);
-  map_data = Papa.parse(csvstring).data;
+  // map_data = Papa.parse(csvstring).data;
+  map_data = JSON.parse(csvstring);
 
-  console.log(map_data[1][1]);
-
-  for (let i1 = 1; i1 < map_data.length; i1++) {
-    lats[i1 - 1] = map_data[i1][1];
-  }
-
-  for (let i1 = 1; i1 < map_data.length; i1++) {
-    longs[i1 - 1] = map_data[i1][2];
-  }
-
-  for (let i1 = 1; i1 < map_data.length; i1++) {
-    site_id[i1 - 1] = map_data[i1][0];
+  for (let i1 = 0; i1 < map_data.length; i1++) {
+    site_id[i1] = map_data[i1]["ID"];
+    site_days[i1] = map_data[i1]["days"];
+    lats[i1] = map_data[i1]["latitude"];
+    longs[i1] = map_data[i1]["longitude"];
+    site_climate[i1] = map_data[i1]["Koppen_2"];
   }
 
   // scatter map
@@ -38,8 +38,10 @@ promise_1.then(() => {
       type: "scattergeo",
       mode: "markers",
       text: site_id,
-      hovertemplate: "Site ID: %{text}<extra></extra><br>Alireza",
-      hoverinfo: "text",
+      customdata: site_days,
+      meta: site_climate, 
+      hovertemplate:
+        "Site ID: %{text}<extra></extra><br> Days: %{customdata} <br> Climate: %{meta}",
       lon: longs,
       lat: lats,
       marker: {
@@ -68,16 +70,15 @@ promise_1.then(() => {
   layout = {
     title: false,
     autosize: true,
-    // height: 1000, 
+    // height: 1000,
     // width: 1000,
     margin: {
       l: 5,
       r: 5,
       b: 0,
       t: 0,
-      pad: 4
-     
-    }, 
+      pad: 4,
+    },
     // paper_bgcolor: "#000000",
     font: {
       family: "Droid Serif, serif",

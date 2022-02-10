@@ -27,11 +27,20 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- <script src="https://cdn.plot.ly/plotly-2.8.3.min.js"></script> -->
     <script src="js/plotly-2.8.3.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+      // var myMapsApiKey = "AIzaSyDkeJEa0IuQEHgzHRR4nZOnk_ZiHF6TwLA";
+
+      google.charts.load("current", {
+        packages: ["corechart"],
+      });
+    </script>
     <script src="js/jquery.csv.min.js"></script>
     <script src="js/ajax-utils.js"></script>
     <script src="js/papaparse.min.js"></script>
 
     <script src="js/myplots.js"></script>
+    <!-- <script src="js/gglplots.js"></script> -->
     <script src="js/script.js"></script>
   </head>
 
@@ -111,11 +120,38 @@
         <div class="container my-5" id="section_separator">
           <span class="material-icons">more_horiz</span>
         </div>
-        <h1 class="text-center my-5">S2. Input Variables</h1>
+        
+
+        <div class="container" id="inputvar_complete">
+          <div class="container" id="inputvar_and_button">
+            <button
+              class="btn btn-primary me-4"
+              id="inputvar_show_button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#inputvar_section"
+              aria-hidden="false"
+              aria-controls="inputvar_section"
+            >
+              <span class="material-icons">expand_more</span>
+            </button>
+            <h1 class="text-center my-5">S2. Input Variables</h1>
+          </div>
+
+          <section class="collapse container" id="inputvar_section">
+            <p class="mt-5">
+              In this section, we can see the selected input variables for the models of each experiment.
+            </p>
+            <!-- <div id="map_plotly" class="mt-5"></div> -->
+          </section>
+        </div>
+
+        <div class="container my-5" id="section_separator">
+          <span class="material-icons">more_horiz</span>
+        </div>
+        <div id="gglplot" class="container"></div>
       </div>
     </main>
-    <script>
-      // let map_data = Papa.parse(csvfile);
-    </script>
+    <script></script>
   </body>
 </html>

@@ -32,20 +32,21 @@ section p {
 }
 
 #map_plotly {
-  height: 1000px;
+  height: 40vh;
+  /* height: 40vh;
+  width: 4vw; */
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 #section_separator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#data_and_button {
+#data_and_button, #inputvar_and_button {
   position: relative;
   /* text-align: center; */
   display: flex;
@@ -53,7 +54,7 @@ section p {
   align-items: center;
 }
 
-#data_and_button button {
+#data_and_button button, #inputvar_and_button button {
   background-color: transparent;
   border-color: transparent;
   /* border: 0; */
@@ -62,6 +63,11 @@ section p {
 .material-icons {
   font-size: 64px;
 }
+
+/* #gglplot {
+  height: 300px; 
+  width: 400px;
+} */
 
 @media (max-width: 991px) {
   li a span {

@@ -4,14 +4,21 @@ document.addEventListener("DOMContentLoaded", function (event) {
     .querySelector("#data_show_button")
     .addEventListener("click", function () {
       console.log("Plotted");
+
       Plotly.newPlot("map_plotly", data, layout);
     });
 
-    $("#data_complete").focusout(function () {
-    console.log("#data_complete lost focus!");
-    $("#data_section").collapse("hide");
-  });
-  
+  // $("#data_complete").focusout(function () {
+  //   console.log("data_complete Not focused");
+  //   if ($(this).children(":mouseover").length == 0) {
+  //     console.log("No Child focused");
+  //     $("#data_section").collapse("hide");
+  //   }
+  // });
+
+  // $("#data_section").collapse("hide");
+
+  //
 });
 
 // JQuerry
