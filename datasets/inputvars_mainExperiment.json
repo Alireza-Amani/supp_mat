@@ -1,0 +1,1 @@
+[{"feat_names":"netrad_wm2","ave_feat_imp":0.306},{"feat_names":"der_specH","ave_feat_imp":0.1754},{"feat_names":"airtemp_degC","ave_feat_imp":0.1129},{"feat_names":"NDVI","ave_feat_imp":0.0999},{"feat_names":"LAI","ave_feat_imp":0.0971},{"feat_names":"VPD_kPa","ave_feat_imp":0.0856},{"feat_names":"SWC1","ave_feat_imp":0.0695},{"feat_names":"atmpress_kPa","ave_feat_imp":0.0535}]

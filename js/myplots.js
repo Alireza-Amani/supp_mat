@@ -39,7 +39,7 @@ promise_1.then(() => {
       mode: "markers",
       text: site_id,
       customdata: site_days,
-      meta: site_climate, 
+      meta: site_climate,
       hovertemplate:
         "Site ID: %{text}<extra></extra><br> Days: %{customdata} <br> Climate: %{meta}",
       lon: longs,
@@ -73,6 +73,7 @@ promise_1.then(() => {
     // height: 1000,
     // width: 1000,
     margin: {
+      autoexpand: false,
       l: 5,
       r: 5,
       b: 0,
@@ -109,3 +110,62 @@ promise_1.then(() => {
     },
   };
 });
+
+// input variables for each experiment
+let inputvars_mainExperiment = {
+  invar_names: [
+    "Net Radiation",
+    "Specific Humidity",
+    "Air temperature",
+    "NDVI",
+    "LAI",
+    "Vapor Pressure Deficit",
+    "Soil Moisture",
+    "Atmospheric Pressure",
+  ],
+  importance_score: [
+    0.306, 0.1754, 0.1129, 0.0999, 0.0971, 0.0856, 0.0694, 0.0535,
+  ],
+};
+
+var data_hbarplot_inputvar_mainExp = [
+  {
+    type: "bar",
+    orientation: "h",
+    x: inputvars_mainExperiment.importance_score,
+    y: inputvars_mainExperiment.invar_names,
+  },
+];
+
+var layout_hbarplot_inputvar_mainExp = {
+  xaxis: {
+    title: "Importance Score",
+    titlefont: {
+      size: 30,
+    },
+    tickfont: {
+      size: 20,
+    },
+  },
+  yaxis: {
+    tickfont: {
+      size: 20,
+    },
+  },
+  autosize: false,
+  height: 800,
+  width: 1200,
+
+  margin: {
+    autoexpand: false,
+    l: 245,
+    r: 5,
+    b: 120,
+    t: 0,
+    pad: 5,
+  },
+};
+
+var config_hbarplot_inputvar_mainExp = {
+  responsive: true
+};

@@ -1,0 +1,9 @@
+feat_names,ave_feat_imp
+netrad_wm2,0.30599942
+der_specH,0.17542361
+airtemp_degC,0.112913897
+NDVI,0.099944293
+LAI,0.097117549
+VPD_kPa,0.085623115
+SWC1,0.069484366
+atmpress_kPa,0.053493751

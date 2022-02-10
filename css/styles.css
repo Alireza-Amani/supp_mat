@@ -25,10 +25,10 @@ li a span {
 }
 
 section.container {
-  margin-top: 2vw;
+  margin-top: 2.01vw;
 }
 section p {
-  font-size: 1vw;
+  font-size: 1.3vw;
 }
 
 #map_plotly {
@@ -40,13 +40,22 @@ section p {
   align-items: center;
 }
 
+#hbarplot_plotly {
+  /* height: 40vh; */
+  /* width: 50vw; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #section_separator {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#data_and_button, #inputvar_and_button {
+#data_and_button,
+#inputvar_and_button {
   position: relative;
   /* text-align: center; */
   display: flex;
@@ -54,7 +63,8 @@ section p {
   align-items: center;
 }
 
-#data_and_button button, #inputvar_and_button button {
+#data_and_button button,
+#inputvar_and_button button {
   background-color: transparent;
   border-color: transparent;
   /* border: 0; */
@@ -64,10 +74,9 @@ section p {
   font-size: 64px;
 }
 
-/* #gglplot {
-  height: 300px; 
-  width: 400px;
-} */
+#gglplot {
+  height: 100vh;
+}
 
 @media (max-width: 991px) {
   li a span {

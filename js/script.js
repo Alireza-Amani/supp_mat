@@ -5,7 +5,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
     .addEventListener("click", function () {
       console.log("Plotted");
 
-      Plotly.newPlot("map_plotly", data, layout);
+      Plotly.newPlot(
+        "map_plotly",
+        data,
+        layout
+      );
     });
 
   // $("#data_complete").focusout(function () {
@@ -19,6 +23,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
   // $("#data_section").collapse("hide");
 
   //
+  Plotly.newPlot(
+    "hbarplot_plotly",
+    data_hbarplot_inputvar_mainExp,
+    layout_hbarplot_inputvar_mainExp,
+    config_hbarplot_inputvar_mainExp
+  );
 });
 
 // JQuerry
