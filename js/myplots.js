@@ -111,6 +111,9 @@ promise_1.then(() => {
   };
 });
 
+//
+//
+//
 // input variables for each experiment
 let inputvars_mainExperiment = {
   invar_names: [
@@ -148,6 +151,7 @@ var layout_hbarplot_inputvar_mainExp = {
     },
   },
   yaxis: {
+    autorange: "reversed",
     tickfont: {
       size: 20,
     },
@@ -161,11 +165,95 @@ var layout_hbarplot_inputvar_mainExp = {
     l: 245,
     r: 5,
     b: 120,
-    t: 0,
+    t: 100,
     pad: 5,
   },
 };
 
 var config_hbarplot_inputvar_mainExp = {
-  responsive: true
+  responsive: true,
 };
+
+// ------------ *********      YOO HAH HAHAHAH
+// input vars for vegetation robustness experiment
+let inputvars_vegetationExperiment = {
+  invar_names: [
+    "Net Radiation",
+    "Air temperature",
+    "LAI",
+    "Vapor Pressure Deficit",
+    "Specific Humidity",
+    "Atmospheric Pressure",
+    "Soil Moisture",
+    "NDVI",
+  ],
+  importance_score: [
+    0.3147, 0.166, 0.1256, 0.1163, 0.1075, 0.0625, 0.0556, 0.0515,
+  ],
+};
+
+var data_hbarplot_inputvar_vegetationExp = [
+  {
+    type: "bar",
+    orientation: "h",
+    x: inputvars_vegetationExperiment.importance_score,
+    y: inputvars_vegetationExperiment.invar_names,
+  },
+];
+
+// input vars for climate robustness experiment
+let inputvars_climateExperiment = {
+  invar_names: [
+    "Net Radiation",
+    "LAI",
+    "Air temperature",
+    "Vapor Pressure Deficit",
+    "NDVI",
+    "Soil Moisture",
+    "Specific Humidity",
+    "Atmospheric Pressure",
+  ],
+  importance_score: [
+    0.3202, 0.1516, 0.1382, 0.0909, 0.0839, 0.083, 0.0787, 0.0532,
+  ],
+};
+
+var data_hbarplot_inputvar_climateExp = [
+  {
+    type: "bar",
+    orientation: "h",
+    x: inputvars_climateExperiment.importance_score,
+    y: inputvars_climateExperiment.invar_names,
+  },
+];
+
+// input vars for temporal separation experiment
+let inputvars_temporalExperiment = {
+  invar_names: [
+    "Net Radiation",
+    "Specific Humidity",
+    "Air temperature",
+    "NDVI",
+    "LAI",
+    "Soil Moisture",
+    "Vapor Pressure Deficit",
+    "Relative Humidity",
+    "Atmospheric Pressure",
+    "Wind Speed",
+    "is_Arid",
+    "is_Forest",
+  ],
+  importance_score: [
+    0.3393, 0.1429, 0.0974, 0.0839, 0.0755, 0.062, 0.058, 0.0471, 0.0402,
+    0.0291, 0.0131, 0.0112,
+  ],
+};
+
+var data_hbarplot_inputvar_temporalExp = [
+  {
+    type: "bar",
+    orientation: "h",
+    x: inputvars_temporalExperiment.importance_score,
+    y: inputvars_temporalExperiment.invar_names,
+  },
+];

@@ -120,7 +120,6 @@
         <div class="container my-5" id="section_separator">
           <span class="material-icons">more_horiz</span>
         </div>
-        
 
         <div class="container" id="inputvar_complete">
           <div class="container" id="inputvar_and_button">
@@ -140,7 +139,39 @@
 
           <section class="collapse container" id="inputvar_section">
             <p class="mt-5">
-              In this section, we can see the selected input variables for the models of each experiment.
+              In this section, we can see the selected input variables for the
+              models of each experiment.
+            </p>
+            <p>
+              Choose the experiment <br />
+              <button
+                type="button"
+                class="btn btn-secondary btn-lg active"
+                aria-pressed="true"
+                data-bs-toggle="button"
+                autocomplete="off"
+                id="button_mainExpinputvars_plot"
+              >
+                Main
+              </button>
+              <button
+                class="btn btn-secondary btn-lg"
+                id="button_vegetationExpinputvars_plot"
+              >
+                Vegetation Robustness
+              </button>
+              <button
+                class="btn btn-secondary btn-lg"
+                id="button_climateExpinputvars_plot"
+              >
+                Climate Robustness
+              </button>
+              <button
+                class="btn btn-secondary btn-lg"
+                id="button_temporalExpinputvars_plot"
+              >
+                Temporal Separation
+              </button>
             </p>
             <div id="hbarplot_plotly" class="mt-5"></div>
           </section>
