@@ -48,7 +48,30 @@ document.addEventListener("DOMContentLoaded", function (event) {
         config_hbarplot_inputvar_mainExp
       );
     });
+
+  // ************** hyperparameter section
+
+  document
+    .querySelectorAll('input[name="experiment_hyperparam"]')
+    .forEach((elem) => {
+      elem.addEventListener("change", function (event) {
+        experiment_radio = event.target.value;
+        console.log(experiment_radio);
+      });
+    });
+
+  document
+    .querySelectorAll('input[name="model_hyperparam"]')
+    .forEach((elem) => {
+      elem.addEventListener("change", function (event) {
+        model_radio = event.target.value;
+        console.log(model_radio);
+      });
+    });
 }); // end of DOMloaded
+
+let experiment_radio = "Main";
+let model_radio = "RF";
 
 // --------------------- ********
 //

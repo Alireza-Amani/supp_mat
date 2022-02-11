@@ -42,6 +42,9 @@
     <script src="js/myplots.js"></script>
     <!-- <script src="js/gglplots.js"></script> -->
     <script src="js/script.js"></script>
+
+    <!-- highligher  -->
+    <link rel="stylesheet" href="css/prism.css" />
   </head>
 
   <body>
@@ -146,28 +149,28 @@
               Choose the experiment <br />
               <button
                 type="button"
-                class="btn btn-secondary btn-lg active"
+                class="btn btn-primary btn-lg active"
                 aria-pressed="true"
                 data-bs-toggle="button"
                 autocomplete="off"
                 id="button_mainExpinputvars_plot"
               >
-                Main
+                Mainprimary
               </button>
               <button
-                class="btn btn-secondary btn-lg"
+                class="btn btn-primary btn-lg"
                 id="button_vegetationExpinputvars_plot"
               >
                 Vegetation Robustness
               </button>
               <button
-                class="btn btn-secondary btn-lg"
+                class="btn btn-primary btn-lg"
                 id="button_climateExpinputvars_plot"
               >
                 Climate Robustness
               </button>
               <button
-                class="btn btn-secondary btn-lg"
+                class="btn btn-primary btn-lg"
                 id="button_temporalExpinputvars_plot"
               >
                 Temporal Separation
@@ -176,6 +179,133 @@
             <div id="hbarplot_plotly" class="mt-5"></div>
           </section>
         </div>
+        <!-- end of inputvar_complete -->
+        <!-- ************************************************************************* -->
+
+        <div class="container my-5" id="section_separator">
+          <span class="material-icons">more_horiz</span>
+        </div>
+
+        <div class="container" id="hyperparameter_complete">
+          <div class="container" id="hyperparameter_and_button">
+            <button
+              class="btn btn-primary me-4"
+              id="hyperparameter_show_button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#hyperparameter_section"
+              aria-hidden="false"
+              aria-controls="hyperparameter_section"
+            >
+              <span class="material-icons">expand_more</span>
+            </button>
+            <h1 class="text-center my-5">S3. Hyperparameter Tuning</h1>
+          </div>
+
+          <section class="collapse container" id="hyperparameter_section">
+            <p class="mt-5">
+              In this section, we can see the selected input variables for the
+              models of each experiment.
+            </p>
+
+            <p>Choose the experiment</p>
+
+            <div class="form-check form-check-inline">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="experiment_hyperparam"
+                id="button_mainExphyperparameter"
+                value="Main"
+              />
+              <label for="experiment_hyperparam" class="form-check-label"
+                >Main</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="experiment_hyperparam"
+                id="button_vegetationExphyperparameter"
+                value="Vegetation Robustness"
+              />
+              <label for="experiment_hyperparam" class="form-check-label"
+                >Vegetation Robustness</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="experiment_hyperparam"
+                id="button_climateExphyperparameter"
+                value="Climate Robustness"
+              />
+              <label for="experiment_hyperparam" class="form-check-label"
+                >Climate Robustness</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="experiment_hyperparam"
+                id="button_temporalExphyperparameter"
+                value=" Temporal Separation"
+              />
+              <label for="experiment_hyperparam" class="form-check-label">
+                Temporal Separation</label
+              >
+            </div>
+
+            <p>
+              Choose the model
+              <br />
+            </p>
+
+            <div class="form-check form-check-inline">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="model_hyperparam"
+                id="button_RFhyperparameter"
+                value="RF"
+              />
+              <label for="model_hyperparam" class="form-check-label">RF</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="model_hyperparam"
+                id="button_LGBMhyperparameter"
+                value="LGBM"
+              />
+              <label for="model_hyperparam" class="form-check-label"
+                >LGBM</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="model_hyperparam"
+                id="button_NNperparameter"
+                value="NN"
+              />
+              <label for="model_hyperparam" class="form-check-label">NN</label>
+            </div>
+
+            <div id="codes_hyperparameter" class="container">
+              <pre class="lang-python" id="main_rf_hyperparams"><code>#!Python
+
+              </code></pre>
+            </div>
+          </section>
+        </div>
+        <!-- end of hyperparameter_complete -->
+        <!-- ************************************************************************* -->
 
         <div class="container my-5" id="section_separator">
           <span class="material-icons">more_horiz</span>
@@ -183,6 +313,6 @@
         <div id="gglplot" class="container"></div>
       </div>
     </main>
-    <script></script>
+    <script src="js/prism.js"></script>
   </body>
 </html>
