@@ -80,6 +80,18 @@ section p {
   height: 100vh;
 }
 
+/* codes hyperparams of each model */
+#main_rf_hyperparams,
+#vegetation_rf_hyperparams,
+#climate_rf_hyperparams,
+#temporal_rf_hyperparams,
+#main_lgbm_hyperparams,
+#vegetation_lgbm_hyperparams,
+#climate_lgbm_hyperparams,
+#temporal_lgbm_hyperparams {
+  display: none;
+}
+
 @media (max-width: 991px) {
   li a span {
     font-size: 3vw;

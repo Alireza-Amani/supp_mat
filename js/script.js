@@ -49,30 +49,65 @@ document.addEventListener("DOMContentLoaded", function (event) {
       );
     });
 
-  // ************** hyperparameter section
-
-  document
-    .querySelectorAll('input[name="experiment_hyperparam"]')
-    .forEach((elem) => {
-      elem.addEventListener("change", function (event) {
-        experiment_radio = event.target.value;
-        console.log(experiment_radio);
-      });
-    });
-
-  document
-    .querySelectorAll('input[name="model_hyperparam"]')
-    .forEach((elem) => {
-      elem.addEventListener("change", function (event) {
-        model_radio = event.target.value;
-        console.log(model_radio);
-      });
-    });
+  $("input:radio").on("change", function (e) {
+    if (e.currentTarget.name === "experiment_hyperparam") {
+      experiment_radio = e.currentTarget.value;
+      console.log(experiment_radio);
+    } else {
+      model_radio = e.currentTarget.value;
+      console.log(model_radio);
+    }
+    console.log("Frank God Sinatra");
+    if (experiment_radio === "Main") {
+      if (model_radio === "RF") {
+        $("#main_rf_hyperparams").show();
+        $("#codes_hyperparameter pre").not("#main_rf_hyperparams").hide();
+        console.log(model_radio + " " + experiment_radio);
+      } else if (model_radio === "LGBM") {
+        $("#main_lgbm_hyperparams").show();
+        $("#codes_hyperparameter pre").not("#main_lgbm_hyperparams").hide();
+        console.log(model_radio + " " + experiment_radio);
+      }
+    } else if (experiment_radio === "Vegetation Robustness") {
+      if (model_radio === "RF") {
+        $("#vegetation_rf_hyperparams").show();
+        $("#codes_hyperparameter pre").not("#vegetation_rf_hyperparams").hide();
+        console.log(model_radio + " " + experiment_radio);
+      } else if (model_radio === "LGBM") {
+        $("#vegetation_lgbm_hyperparams").show();
+        $("#codes_hyperparameter pre")
+          .not("#vegetation_lgbm_hyperparams")
+          .hide();
+        console.log(model_radio + " " + experiment_radio);
+      }
+    } else if (experiment_radio === "Climate Robustness") {
+      if (model_radio === "RF") {
+        $("#climate_rf_hyperparams").show();
+        $("#codes_hyperparameter pre").not("#climate_rf_hyperparams").hide();
+        console.log(model_radio + " " + experiment_radio);
+      } else if (model_radio === "LGBM") {
+        $("#climate_lgbm_hyperparams").show();
+        $("#codes_hyperparameter pre").not("#climate_lgbm_hyperparams").hide();
+        console.log(model_radio + " " + experiment_radio);
+      }
+    } else {
+      if (model_radio === "RF") {
+        $("#temporal_rf_hyperparams").show();
+        $("#codes_hyperparameter pre").not("#temporal_rf_hyperparams").hide();
+        console.log(model_radio + " " + experiment_radio);
+      } else if (model_radio === "LGBM") {
+        $("#temporal_lgbm_hyperparams").show();
+        $("#codes_hyperparameter pre").not("#temporal_lgbm_hyperparams").hide();
+        console.log(model_radio + " " + experiment_radio);
+      }
+    }
+  });
 }); // end of DOMloaded
 
-let experiment_radio = "Main";
-let model_radio = "RF";
-
+// ************** hyperparameter section
+let experiment_radio = "";
+let model_radio = "";
+let radio_buttons = undefined;
 // --------------------- ********
 //
 //
