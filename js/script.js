@@ -67,6 +67,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
         $("#main_lgbm_hyperparams").show();
         $("#codes_hyperparameter pre").not("#main_lgbm_hyperparams").hide();
         console.log(model_radio + " " + experiment_radio);
+      } else if (model_radio === "NN") {
+        $("#main_NN_hyperparams").show();
+        $("#codes_hyperparameter pre").not("#main_NN_hyperparams").hide();
       }
     } else if (experiment_radio === "Vegetation Robustness") {
       if (model_radio === "RF") {
@@ -79,6 +82,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
           .not("#vegetation_lgbm_hyperparams")
           .hide();
         console.log(model_radio + " " + experiment_radio);
+      } else if (model_radio === "NN") {
+        $("#vegetation_NN_hyperparams").show();
+        $("#codes_hyperparameter pre").not("#vegetation_NN_hyperparams").hide();
       }
     } else if (experiment_radio === "Climate Robustness") {
       if (model_radio === "RF") {
@@ -89,6 +95,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
         $("#climate_lgbm_hyperparams").show();
         $("#codes_hyperparameter pre").not("#climate_lgbm_hyperparams").hide();
         console.log(model_radio + " " + experiment_radio);
+      } else if (model_radio === "NN") {
+        $("#climate_NN_hyperparams").show();
+        $("#codes_hyperparameter pre").not("#climate_NN_hyperparams").hide();
       }
     } else {
       if (model_radio === "RF") {
@@ -99,15 +108,40 @@ document.addEventListener("DOMContentLoaded", function (event) {
         $("#temporal_lgbm_hyperparams").show();
         $("#codes_hyperparameter pre").not("#temporal_lgbm_hyperparams").hide();
         console.log(model_radio + " " + experiment_radio);
+      } else if (model_radio === "NN") {
+        $("#temporal_NN_hyperparams").show();
+        $("#codes_hyperparameter pre").not("#temporal_NN_hyperparams").hide();
       }
     }
   });
+
+  // include html garage
+  var html_garage = "";
+  promise_indluce = new Promise((resolve, reject) => {
+    $ajaxUtils.sendGetRequest(
+      "html_garage/hyperparam_codes.html",
+      function (request) {
+        html_garage = request.responseText;
+        resolve(html_garage);
+      }
+    );
+  });
+  promise_indluce
+    .then((response) => {
+      document.querySelector("#codes_hyperparameter").innerHTML = response;
+      console.log("included fucks!");
+    })
+    .then(() => {
+      high_these = document.querySelector("#codes_hyperparameter");
+      Prism.highlightAllUnder(high_these);
+    });
 }); // end of DOMloaded
 
 // ************** hyperparameter section
 let experiment_radio = "";
 let model_radio = "";
 let radio_buttons = undefined;
+var high_these = "";
 // --------------------- ********
 //
 //
@@ -122,6 +156,7 @@ $(document).ready(function () {
   //   console.log("data button focused!");
   // });
 
+  //   }
   // $("#data_complete").focusout(function () {
   //   console.log("#data_complete lost focus!");
   //   $("#data_section").collapse("hide");
@@ -131,7 +166,6 @@ $(document).ready(function () {
   //   if ($(this).children(":mouseover").length == 0) {
   //     console.log("No Child focused");
   //     $("#data_section").collapse("hide");
-  //   }
   // });
 
   // $("#data_section").collapse("hide");

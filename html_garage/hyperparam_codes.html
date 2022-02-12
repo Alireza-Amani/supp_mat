@@ -1,0 +1,446 @@
+<pre class="lang-python" id="main_rf_hyperparams"><code>#!Python
+from sklearn.ensemble import RandomForestRegressor
+                
+nj = 22 # numer of CPU cores to use
+seed = 1915 # random seed 
+                
+# Random Forest instance
+rf = RandomForestRegressor(n_jobs=nj, verbose=1, random_state=seed)
+rf_tuned_hyperparameters = {
+    "n_estimators" : 100,
+    "max_features" : 3,
+    "max_samples" : 0.05,
+    "min_samples_leaf" : 3}
+rf.set_params(**rf_tuned_hyperparameters)
+rf.fit(X_train, y_train) # model is ready to be fit on training set</code></pre>
+
+<pre class="lang-python" id="vegetation_rf_hyperparams"><code>#!Python
+from sklearn.ensemble import RandomForestRegressor
+                
+nj = 22 # numer of CPU cores to use
+seed = 1915 # random seed 
+                
+# Random Forest instance
+rf = RandomForestRegressor(n_jobs=nj, verbose=1, random_state=seed)
+rf_tuned_hyperparameters = {
+    "n_estimators" : 100,
+    "max_features" : 4,
+    "max_samples" : 0.01,
+    "min_samples_leaf" : 4}
+rf.set_params(**rf_tuned_hyperparameters)
+rf.fit(X_train, y_train) # model is ready to be fit on training set</code></pre>
+
+<pre class="lang-python" id="climate_rf_hyperparams"><code>#!Python
+from sklearn.ensemble import RandomForestRegressor
+                
+nj = 22 # numer of CPU cores to use
+seed = 1915 # random seed 
+                
+# Random Forest instance
+rf = RandomForestRegressor(n_jobs=nj, verbose=1, random_state=seed)
+rf_tuned_hyperparameters = {
+    "n_estimators" : 100,
+    "max_features" : 2,
+    "max_samples" : 0.05,
+    "min_samples_leaf" : 3}
+rf.set_params(**rf_tuned_hyperparameters)
+rf.fit(X_train, y_train) # model is ready to be fit on training set</code></pre>
+
+<pre class="lang-python" id="temporal_rf_hyperparams"><code>#!Python
+from sklearn.ensemble import RandomForestRegressor
+                
+nj = 22 # numer of CPU cores to use
+seed = 1915 # random seed 
+                
+# Random Forest instance
+rf = RandomForestRegressor(n_jobs=nj, verbose=1, random_state=seed)
+rf_tuned_hyperparameters = {
+    "n_estimators" : 100,
+    "max_features" : 5,
+    "max_samples" : 0.5,
+    "min_samples_leaf" : 3}
+rf.set_params(**rf_tuned_hyperparameters)
+rf.fit(X_train, y_train) # model is ready to be fit on training set</code></pre>
+
+<pre class="lang-python" id="main_lgbm_hyperparams"><code>#!Python
+import lightgbm
+
+nj = 22 # numer of CPU cores to use
+seed = 1915 # random seed 
+
+LGBM = lightgbm.LGBMRegressor(n_jobs=4, random_state=4, subsample_freq=1)
+LGBM_tuned_hyperparameters = {
+    "n_estimators" : 500,
+    "learning_rate" : 0.025,
+    "num_leaves" : 10,
+    "min_data_in_leaf" : 100,
+    "subsample" : 0.05,
+    "feature_fraction" : 0.9 
+
+}
+LGBM.set_params(**LGBM_tuned_hyperparameters) 
+lightgbm.early_stopping(15)
+
+LGBM.fit(X_train, y_train) # model is ready to be fit on training set</code></pre>
+
+<pre class="lang-python" id="vegetation_lgbm_hyperparams"><code>#!Python
+import lightgbm
+
+nj = 22 # numer of CPU cores to use
+seed = 1915 # random seed 
+
+LGBM = lightgbm.LGBMRegressor(n_jobs=4, random_state=4, subsample_freq=1)
+LGBM_tuned_hyperparameters = {
+    "n_estimators" : 500,
+    "learning_rate" : 0.01,
+    "num_leaves" : 8,
+    "min_data_in_leaf" : 100,
+    "subsample" : 0.1,
+    "feature_fraction" : 0.7 
+
+}
+LGBM.set_params(**LGBM_tuned_hyperparameters) 
+lightgbm.early_stopping(15)
+
+LGBM.fit(X_train, y_train) # model is ready to be fit on training set</code></pre>
+
+<pre class="lang-python" id="climate_lgbm_hyperparams"><code>#!Python
+import lightgbm
+
+nj = 22 # numer of CPU cores to use
+seed = 1915 # random seed 
+
+LGBM = lightgbm.LGBMRegressor(n_jobs=4, random_state=4, subsample_freq=1)
+LGBM_tuned_hyperparameters = {
+    "n_estimators" : 250,
+    "learning_rate" : 0.015,
+    "num_leaves" : 6,
+    "min_data_in_leaf" : 100,
+    "subsample" : 0.05,
+    "feature_fraction" : 0.7 
+}
+LGBM.set_params(**LGBM_tuned_hyperparameters) 
+lightgbm.early_stopping(15)
+
+LGBM.fit(X_train, y_train) # model is ready to be fit on training set</code></pre>
+
+<pre class="lang-python" id="temporal_lgbm_hyperparams"><code>#!Python
+import lightgbm
+
+nj = 22 # numer of CPU cores to use
+seed = 1915 # random seed 
+
+LGBM = lightgbm.LGBMRegressor(n_jobs=4, random_state=4, subsample_freq=1)
+LGBM_tuned_hyperparameters = {
+    "n_estimators" : 1000,
+    "learning_rate" : 0.075,
+    "num_leaves" : 40,
+    "min_data_in_leaf" : 25,
+    "subsample" : 0.7,
+    "feature_fraction" : 1 
+
+}
+LGBM.set_params(**LGBM_tuned_hyperparameters) 
+lightgbm.early_stopping(15)
+
+LGBM.fit(X_train, y_train) # model is ready to be fit on training set </code></pre>
+
+<pre class="lang-python" id="main_NN_hyperparams"><code>#!Python
+import tensorflow as tf
+from tensorflow import  keras
+
+# instantiate the Sequential model object
+NN_model = keras.models.Sequential()
+
+weight_initializer = keras.initializers.GlorotNormal()
+L2_regularization = keras.regularizers.L2()
+
+# creating the hidden layer
+nr_units = 15 # number of neurons in the hidden layer
+active_func = "ReLU" # activation function for the hidden layer
+nr_inputvar = 8 # numer of input variables, i.e. number of units in the input layer
+
+hlayer1 = keras.layers.Dense(name = "hidden_layer", units = nr_units,
+                             input_dim = nr_inputvar, activation = active_func,
+                             kernel_initializer = weight_initializer, 
+                             bias_initializer = weight_initializer, 
+                             kernel_regularizer = L2_regularization)
+# batch normalization layer
+batchnorm_layer = keras.layers.BatchNormalization()
+
+# output layer
+out_layer = keras.layers.Dense(name = "output_layer", units=1, activation="linear", 
+                               kernel_initializer=weight_initializer)
+
+# add the layers to the model 
+[NN_model.add(layer) for layer in [hlayer1, batchnorm_layer, out_layer]]
+
+
+# compiling the model 
+opt_method = "Adam" # the weight optimization method 
+loss_func = "MSE" # loss function: Mean Square Error
+error_metric = "MAE" # evaluation metric 
+
+NN_model.compile(loss = loss_func, metrics = [error_metric],
+                 optimizer = opt_method)
+
+# print(NN_model.summary())  
+
+# as explained in the paper, we train the NN models using 100 resamples from
+# the training data. That is, 100 pair of training/validation sets. 
+## Below we show how we fit one NN model on one of the resamples **********
+
+# early stopping based on validation error values
+# if Validation MAE didnt improve after 40 epochs, stop the model and 
+# restore the best weights 
+early_stop = keras.callbacks.EarlyStopping(monitor='val_MAE' ,
+                 min_delta=1e-3, patience=40, verbose=2, mode='auto',
+                 restore_best_weights=True)
+
+# learning rate decay 
+def scheduler(epoch, lr):
+    if epoch < 15:
+        return lr
+    else:
+        return lr * tf.math.exp(-0.1)
+lr_decay = tf.keras.callbacks.LearningRateScheduler(scheduler, 1)
+
+batch_size = 2*11 # mini-batch size 
+learning_r = 0.001 # initial learning rate 
+nr_epochs = 200 # maximum number of epochs 
+
+# fitting the model (Finally! whew ...)
+NN_model.fit(
+    x = X_train, y = y_train,
+    validation_data = (X_valid, y_valid),
+    epochs=nr_epochs, batch_size = batch_size, 
+    verbose = 1, callbacks=[early_stop, lr_decay], 
+    use_multiprocessing = True)</code></pre>
+
+<pre class="lang-python" id="vegetation_NN_hyperparams"><code>#!Python
+import tensorflow as tf
+from tensorflow import  keras
+
+# instantiate the Sequential model object
+NN_model = keras.models.Sequential()
+
+weight_initializer = keras.initializers.GlorotNormal()
+L2_regularization = keras.regularizers.L2()
+
+# creating the hidden layer
+nr_units = 15 # number of neurons in the hidden layer
+active_func = "ReLU" # activation function for the hidden layer
+nr_inputvar = 8 # numer of input variables, i.e. number of units in the input layer
+
+hlayer1 = keras.layers.Dense(name = "hidden_layer", units = nr_units,
+                             input_dim = nr_inputvar, activation = active_func,
+                             kernel_initializer = weight_initializer, 
+                             bias_initializer = weight_initializer, 
+                             kernel_regularizer = L2_regularization)
+# batch normalization layer
+batchnorm_layer = keras.layers.BatchNormalization()
+
+# output layer
+out_layer = keras.layers.Dense(name = "output_layer", units=1, activation="linear", 
+                               kernel_initializer=weight_initializer)
+
+# add the layers to the model 
+[NN_model.add(layer) for layer in [hlayer1, batchnorm_layer, out_layer]]
+
+
+# compiling the model 
+opt_method = "Adam" # the weight optimization method 
+loss_func = "MSE" # loss function: Mean Square Error
+error_metric = "MAE" # evaluation metric 
+
+NN_model.compile(loss = loss_func, metrics = [error_metric],
+                 optimizer = opt_method)
+
+# print(NN_model.summary())  
+
+# as explained in the paper, we train the NN models using 100 resamples from
+# the training data. That is, 100 pair of training/validation sets. 
+## Below we show how we fit one NN model on one of the resamples **********
+
+# early stopping based on validation error values
+# if Validation MAE didnt improve after 40 epochs, stop the model and 
+# restore the best weights 
+early_stop = keras.callbacks.EarlyStopping(monitor='val_MAE' ,
+                 min_delta=1e-3, patience=40, verbose=2, mode='auto',
+                 restore_best_weights=True)
+
+# learning rate decay 
+def scheduler(epoch, lr):
+    if epoch < 15:
+        return lr
+    else:
+        return lr * tf.math.exp(-0.1)
+lr_decay = tf.keras.callbacks.LearningRateScheduler(scheduler, 1)
+
+batch_size = 2*11 # mini-batch size 
+learning_r = 0.001 # initial learning rate 
+nr_epochs = 200 # maximum number of epochs 
+
+# fitting the model (Finally! whew ...)
+NN_model.fit(
+    x = X_train, y = y_train,
+    validation_data = (X_valid, y_valid),
+    epochs=nr_epochs, batch_size = batch_size, 
+    verbose = 1, callbacks=[early_stop, lr_decay], 
+    use_multiprocessing = True)</code></pre>
+
+<pre class="lang-python" id="climate_NN_hyperparams"><code>#!Python
+import tensorflow as tf
+from tensorflow import  keras
+
+# instantiate the Sequential model object
+NN_model = keras.models.Sequential()
+
+weight_initializer = keras.initializers.GlorotNormal()
+L2_regularization = keras.regularizers.L2()
+
+# creating the hidden layer
+nr_units = 15 # number of neurons in the hidden layer
+active_func = "ReLU" # activation function for the hidden layer
+nr_inputvar = 8 # numer of input variables, i.e. number of units in the input layer
+
+hlayer1 = keras.layers.Dense(name = "hidden_layer", units = nr_units,
+                             input_dim = nr_inputvar, activation = active_func,
+                             kernel_initializer = weight_initializer, 
+                             bias_initializer = weight_initializer, 
+                             kernel_regularizer = L2_regularization)
+# batch normalization layer
+batchnorm_layer = keras.layers.BatchNormalization()
+
+# output layer
+out_layer = keras.layers.Dense(name = "output_layer", units=1, activation="linear", 
+                               kernel_initializer=weight_initializer)
+
+# add the layers to the model 
+[NN_model.add(layer) for layer in [hlayer1, batchnorm_layer, out_layer]]
+
+
+# compiling the model 
+opt_method = "Adam" # the weight optimization method 
+loss_func = "MSE" # loss function: Mean Square Error
+error_metric = "MAE" # evaluation metric 
+
+NN_model.compile(loss = loss_func, metrics = [error_metric],
+                 optimizer = opt_method)
+
+# print(NN_model.summary())  
+
+# as explained in the paper, we train the NN models using 100 resamples from
+# the training data. That is, 100 pair of training/validation sets. 
+## Below we show how we fit one NN model on one of the resamples **********
+
+# early stopping based on validation error values
+# if Validation MAE didnt improve after 40 epochs, stop the model and 
+# restore the best weights 
+early_stop = keras.callbacks.EarlyStopping(monitor='val_MAE' ,
+                 min_delta=1e-3, patience=40, verbose=2, mode='auto',
+                 restore_best_weights=True)
+
+# learning rate decay 
+def scheduler(epoch, lr):
+    if epoch < 15:
+        return lr
+    else:
+        return lr * tf.math.exp(-0.1)
+lr_decay = tf.keras.callbacks.LearningRateScheduler(scheduler, 1)
+
+batch_size = 2*11 # mini-batch size 
+learning_r = 0.001 # initial learning rate 
+nr_epochs = 200 # maximum number of epochs 
+
+# fitting the model (Finally! whew ...)
+NN_model.fit(
+    x = X_train, y = y_train,
+    validation_data = (X_valid, y_valid),
+    epochs=nr_epochs, batch_size = batch_size, 
+    verbose = 1, callbacks=[early_stop, lr_decay], 
+    use_multiprocessing = True)</code></pre>
+
+<pre class="lang-python" id="temporal_NN_hyperparams"><code>#!Python
+import tensorflow as tf
+from tensorflow import  keras
+
+# instantiate the Sequential model object
+NN_model = keras.models.Sequential()
+
+weight_initializer = keras.initializers.GlorotNormal()
+L2_regularization = keras.regularizers.L2()
+
+# creating the hidden layers
+nr_units1 = 200 # number of neurons in the first hidden layer
+nr_units2 = 100 # number of neurons in the second hidden layer
+
+active_func = "ReLU" # activation function for the hidden layer
+nr_inputvar = 12 # numer of input variables, i.e. number of units in the input layer
+
+hlayer1 = keras.layers.Dense(name = "hidden_layer", units = nr_units1,
+                             input_dim = nr_inputvar, activation = active_func,
+                             kernel_initializer = weight_initializer, 
+                             bias_initializer = weight_initializer, 
+                             kernel_regularizer = L2_regularization)
+
+hlayer2 = keras.layers.Dense(name = "hidden_layer", units = nr_units2,
+                             activation = active_func,
+                             kernel_initializer = weight_initializer, 
+                             bias_initializer = weight_initializer, 
+                             kernel_regularizer = L2_regularization)
+# batch normalization layer
+batchnorm_layer = keras.layers.BatchNormalization()
+
+# dropout layer
+drop_layer = keras.layers.Dropout(0.3)
+
+# output layer
+out_layer = keras.layers.Dense(name = "output_layer", units=1, activation="linear", 
+                               kernel_initializer=weight_initializer)
+
+# add the layers to the model 
+[NN_model.add(layer) for layer in
+    [hlayer1, batchnorm_layer, drop_layer, hlayer2, batchnorm_layer, out_layer]]
+
+
+# compiling the model 
+opt_method = "Adam" # the weight optimization method 
+loss_func = "MSE" # loss function: Mean Square Error
+error_metric = "MAE" # evaluation metric 
+
+NN_model.compile(loss = loss_func, metrics = [error_metric],
+                 optimizer = opt_method)
+
+# print(NN_model.summary())  
+
+# as explained in the paper, we train the NN models using 100 resamples from
+# the training data. That is, 100 pair of training/validation sets. 
+## Below we show how we fit one NN model on one of the resamples **********
+
+# early stopping based on validation error values
+# if Validation MAE didnt improve after 40 epochs, stop the model and 
+# restore the best weights 
+early_stop = keras.callbacks.EarlyStopping(monitor='val_MAE' ,
+                 min_delta=1e-3, patience=40, verbose=2, mode='auto',
+                 restore_best_weights=True)
+
+# learning rate decay 
+def scheduler(epoch, lr):
+    if epoch < 15:
+        return lr
+    else:
+        return lr * tf.math.exp(-0.1)
+lr_decay = tf.keras.callbacks.LearningRateScheduler(scheduler, 1)
+
+batch_size = 2*11 # mini-batch size 
+learning_r = 0.001 # initial learning rate 
+nr_epochs = 200 # maximum number of epochs 
+
+# fitting the model (Finally! whew ...)
+NN_model.fit(
+    x = X_train, y = y_train,
+    validation_data = (X_valid, y_valid),
+    epochs=nr_epochs, batch_size = batch_size, 
+    verbose = 1, callbacks=[early_stop, lr_decay], 
+    use_multiprocessing = True)</code></pre>

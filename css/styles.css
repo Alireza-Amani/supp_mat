@@ -81,14 +81,7 @@ section p {
 }
 
 /* codes hyperparams of each model */
-#main_rf_hyperparams,
-#vegetation_rf_hyperparams,
-#climate_rf_hyperparams,
-#temporal_rf_hyperparams,
-#main_lgbm_hyperparams,
-#vegetation_lgbm_hyperparams,
-#climate_lgbm_hyperparams,
-#temporal_lgbm_hyperparams {
+#codes_hyperparameter pre {
   display: none;
 }
 
