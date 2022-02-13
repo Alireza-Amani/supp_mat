@@ -49,6 +49,27 @@ document.addEventListener("DOMContentLoaded", function (event) {
       );
     });
 
+  // include html garage
+  var html_garage = "";
+  promise_indluce = new Promise((resolve, reject) => {
+    $ajaxUtils.sendGetRequest(
+      "html_garage/hyperparam_codes.html",
+      function (request) {
+        html_garage = request.responseText;
+        resolve(html_garage);
+      }
+    );
+  });
+  promise_indluce
+    .then((response) => {
+      document.querySelector("#codes_hyperparameter").innerHTML = response;
+      console.log("included fucks!");
+    })
+    .then(() => {
+      high_these = document.querySelector("#codes_hyperparameter");
+      Prism.highlightAllUnder(high_these);
+    });
+
   $("input:radio").on("change", function (e) {
     if (e.currentTarget.name === "experiment_hyperparam") {
       experiment_radio = e.currentTarget.value;
@@ -115,26 +136,42 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
   });
 
-  // include html garage
-  var html_garage = "";
-  promise_indluce = new Promise((resolve, reject) => {
+  // include html garage - ET equations
+  var html_garage_ETeq = "";
+  promise_indluce_ETequations = new Promise((resolve, reject) => {
     $ajaxUtils.sendGetRequest(
-      "html_garage/hyperparam_codes.html",
+      "html_garage/ETequations_codes.html",
       function (request) {
-        html_garage = request.responseText;
-        resolve(html_garage);
+        html_garage_ETeq = request.responseText;
+        resolve(html_garage_ETeq);
       }
     );
   });
-  promise_indluce
-    .then((response) => {
-      document.querySelector("#codes_hyperparameter").innerHTML = response;
-      console.log("included fucks!");
+  promise_indluce_ETequations
+    .then((response2) => {
+      document.querySelector("#ETequations_Rcode").innerHTML = response2;
+      console.log("Here");
     })
     .then(() => {
-      high_these = document.querySelector("#codes_hyperparameter");
+      high_these = document.querySelector("#ETequations_Rcode");
       Prism.highlightAllUnder(high_these);
     });
+
+  $("input:radio").on("change", function (e) {
+    if (e.currentTarget.name === "choose_ETequations") {
+      eteq_buttons_name = e.currentTarget.value;
+      console.log(experiment_radio);
+    }
+    if (eteq_buttons_name === "Penman") {
+      $("#Penman_snippet").show();
+      $("#Taylor_snippet").hide();
+    } else {
+      $("#Penman_snippet").hide();
+      $("#Taylor_snippet").show();
+    }
+  });
+
+  // ************************************************************************************
 }); // end of DOMloaded
 
 // ************** hyperparameter section
@@ -142,7 +179,8 @@ let experiment_radio = "";
 let model_radio = "";
 let radio_buttons = undefined;
 var high_these = "";
-// --------------------- ********
+// --------------------- ******** ET equations section
+let eteq_buttons_name = "";
 //
 //
 //
