@@ -46,7 +46,15 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <button
+          <h1 id="paper_title" class="text-center fst-bold mt-5">
+            Supplementary materials for
+            <span class="fst-italic"
+              >'Assessing the large scale generalization power of three machine
+              learning models and different sampling strategies for estimating
+              daily evapotranspiration'</span
+            >
+          </h1>
+          <!-- <button
             class="navbar-toggler ms-auto"
             type="button"
             data-bs-toggle="collapse"
@@ -70,25 +78,17 @@
                 >
               </li>
             </ul>
-          </div>
+          </div> -->
         </div>
       </nav>
     </header>
 
     <main>
       <div class="container">
-        <h1 id="paper_title" class="text-center fst-bold mt-5">
-          Supplementary materials for
-          <span class="fst-italic"
-            >'Assessing the generalization power of three machine learning
-            models and three evapotranspiration formulas using 143 FLUXNET
-            towers data'</span
-          >
-        </h1>
         <!-- <hr class="mt-5" id="hr_title" /> -->
-        <div class="container my-5" id="section_separator">
+        <!-- <div class="container my-5" id="section_separator">
           <span class="material-icons">more_horiz</span>
-        </div>
+        </div> -->
 
         <div class="container" id="data_complete">
           <div class="container" id="data_and_button">
@@ -180,6 +180,8 @@
         <div class="container my-5" id="section_separator">
           <span class="material-icons">more_horiz</span>
         </div>
+
+        <!-- ************************************************************************* -->
 
         <div class="container" id="hyperparameter_complete">
           <div class="container" id="hyperparameter_and_button">
@@ -300,20 +302,83 @@
           </section>
         </div>
         <!-- end of hyperparameter_complete -->
+
         <!-- ************************************************************************* -->
 
         <div class="container my-5" id="section_separator">
           <span class="material-icons">more_horiz</span>
         </div>
-        <div
-          id="gglplot"
-          class="container"
-          w3-include-html="include_this.html"
-        ></div>
+
+        <!-- ************************************************************************* -->
+
+        <div class="container" id="ETequations_complete">
+          <div class="container" id="ETequations_and_button">
+            <button
+              class="btn btn-primary me-4"
+              id="ETequations_show_button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#ETequations_section"
+              aria-hidden="false"
+              aria-controls="ETequations_section"
+            >
+              <span class="material-icons">expand_more</span>
+            </button>
+            <h1 class="text-center my-5">S4. ET Equations</h1>
+          </div>
+
+          <section class="collapse container" id="ETequations_section">
+            <p class="mt-5">
+              In this section, we can see the selected input variables for the
+              models of each experiment.
+            </p>
+
+            <p>Choose the experiment</p>
+
+            <div class="form-check form-check-inline">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="choose_ETequations"
+                id="button_Penman"
+                value="Penman"
+              />
+              <label for="choose_ETequations" class="form-check-label"
+                >Penman</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="choose_ETequations"
+                id="button_Priestley-Taylor"
+                value="Priestley-Taylor"
+              />
+              <label for="choose_ETequations" class="form-check-label"
+                >Priestley-Taylor</label
+              >
+            </div>
+
+            <div
+              id="ETequations_Rcode"
+              class="container"
+              w3-include-html="html_garage/ETequations_codes.html"
+            ></div>
+          </section>
+        </div>
+        <!-- end of ETequations_complete -->
+
+        <!-- ************************************************************************* -->
+
+        <!-- <div class="container my-5" id="section_separator">
+          <span class="material-icons">more_horiz</span>
+        </div> -->
+
+        <!-- ************************************************************************* -->
+        <!-- <div class="container" style="height: 50vh"></div> -->
       </div>
     </main>
-    <script>
-      
-    </script>
+    <script></script>
   </body>
 </html>

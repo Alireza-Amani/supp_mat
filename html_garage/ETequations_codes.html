@@ -1,0 +1,199 @@
+<pre class="lang-r" id="Penman_snippet"><code>#!R
+# including the libraries 
+library(tidyverse)
+library(bigleaf)
+
+# implementing the Penman equation ***************************************** 
+setwd("~/Google Drive/My Drive/Papers/PhD_fluxnet/dataframes/")
+
+# reading the data from 98 training sites in the main experiment 
+dftrain <- read_csv("... .csv", show_col_types = FALSE)
+
+Penman_equation <- function(
+    Ta_degC, Rn_wm2, G_wm2, Pa_kPa, z0_m, measureHeight_m, wind_ms, VPD_kPa,
+    use_G = F, correction_coefficient = 1 
+)
+{
+#    "This function gets several required input to calcuate daily ET based on
+#    Penman equation. 
+#   
+#   Parameters:
+#    ------------
+#   Ta_degC : air temperature in degree Celcius
+#
+#   Rn_wm2 : net radiation (W/m2)
+#
+#   G_wm2 : ground heat flux (W/m2, optional)
+#
+#   Pa_kPa : atmospheric pressure (kPa)
+#
+#   z0_m : roughness height (m)
+#
+#   measureHeight_m : measurement height for the wind speed 
+#
+#   wind_ms : wind speed (m/s)
+#
+#   VPD_kPa : vapor pressure deficit (kPa)
+#
+#   use_G : boolean, is G_wm2 included? 
+#
+#   correction_coefficient : correction coefficient from calibration 
+#
+#   out 
+#   ------------
+#   penman_mmday : daily ET (mm/day)
+#   " 
+    
+    # latent heat of vaporization - needed in the equation 
+    Le_MJKg <- latent.heat.vaporization(Tair = Ta_degC) * 1e-6 
+
+    # calculation of available energy 
+    if (use_G)
+    {
+        Energy_MJm2day <- Rn_wm2 - G_wm2 
+    }else 
+    {
+        Energy_MJm2day <- Rn_wm2
+    }
+    Energy_MJm2day <- Energy_MJm2day * 3600 * 24 * 1e-06 
+    
+    # the slope of the saturated vapor-pressure temperature curve (kPa/deg celcius)  
+    term1 <- exp((17.27 * Ta_degC) / (Ta_degC + 273.15))
+    term1 <- 4098 * 0.6108 * term1 
+    term2 <- (Ta_degC + 273.15)^2 
+    delta_kPadegC <- term1 / term2 
+    remove(term1, term2)
+
+    # the psychrometric constant (kPa/Celcius) 
+    gamma_kPadegC <- (0.00163 * Pa_kPa) / Le_MJKg 
+
+    # calculation of 2-m wind speed and wind function 
+    term1 <- 2/z0_m
+    term1 <- log(term1, base = exp(1))
+    term2 <- measureHeight_m / z0_m
+    term2 <- log(term2, base = exp(1))
+    term3 <- term1 / term2 
+    u2_ms <- wind_ms  * term3 
+    wind_func_ms <- 1.313 + (1.381 * u2_ms)
+
+    remove(term1, term2, term3) 
+
+    # wind function * vapor pressure deficit   
+    Ea_mmday <- wind_func_ms * VPD_kPa 
+    
+    term1 <- delta_kPadegC / (delta_kPadegC + gamma_kPadegC)
+    term1 <- (term1 * Energy_MJm2day) / Le_MJKg 
+    
+    term2 <- gamma_kPadegC / (delta_kPadegC + gamma_kPadegC)
+    term2 <- term2 * Ea_mmday 
+    
+    penman_mmday <- (term1 + term2) * correction_coefficient 
+    return(penman_mmday)
+
+}
+
+#  ---------------- calibration
+# for calibration we split the training data into 70% / 30% sets 
+# we find the correction factor using the 70% set and evaluate it using the 30% 
+# split datainto train, valid 
+
+set.seed(1915) # 1915: Frank Sinatra birthday 
+dftrain$index <- 1:dim(dftrain)[1]
+calibration_set <- slice_sample(dftrain, prop = 0.7)
+j1 <- which(dftrain$index %in% calibration_set$index)
+j1 <- dftrain$index[j1] 
+validation_set <-  dftrain |> filter(!index %in% j1) 
+
+# using correction_coefficient = 1, estimating the daily ET for the validation
+# data will result it NMAE equal to 65% 
+# setting correction_coefficient = 0.63 will result in a validation NMAE of 
+# 53%. 
+# a 12% reduction! </code></pre>
+
+<pre class="lang-r" id="Taylor_snippet"><code>#!R
+# including the libraries 
+library(tidyverse)
+library(bigleaf)
+
+# implementing the Penman equation ***************************************** 
+setwd("~/Google Drive/My Drive/Papers/PhD_fluxnet/dataframes/")
+
+# reading the data from 98 training sites in the main experiment 
+dftrain <- read_csv("trainsites_split1.csv", show_col_types = FALSE)
+
+Taylor_equation <- function(Ta_degC, Rn_wm2, G_wm2, Pa_kPa,
+                            correction_coefficient =1.26, use_G = F)
+{
+    "This function gets several required input to calcuate daily ET based on
+    Priestley-Taylor equation. 
+    
+    Parameters:
+    ------------
+    Ta_degC : air temperature in degree Celcius
+
+    Rn_wm2 : net radiation (W/m2)
+
+    G_wm2 : ground heat flux (W/m2, optional)
+
+    Pa_kPa : atmospheric pressure (kPa)
+
+    use_G : boolean, is G_wm2 included? 
+
+    correction_coefficient : correction coefficient from calibration 
+
+    out 
+    ------------
+    taylor_mmday : daily ET (mm/day)
+    " 
+    
+    # latent heat of vaporization - needed in the equation 
+    Le_MJKg <- latent.heat.vaporization(Tair = Ta_degC) * 1e-6 
+
+    # calculation of available energy 
+    if (use_G)
+    {
+        Energy_MJm2day <- Rn_wm2 - G_wm2 
+    }else 
+    {
+        Energy_MJm2day <- Rn_wm2
+    }
+    Energy_MJm2day <- Energy_MJm2day * 3600 * 24 * 1e-06 
+    
+    # the slope of the saturated vapor-pressure temperature curve (kPa/deg celcius)  
+    term1 <- exp((17.27 * Ta_degC) / (Ta_degC + 273.15))
+    term1 <- 4098 * 0.6108 * term1 
+    term2 <- (Ta_degC + 273.15)^2 
+    delta_kPadegC <- term1 / term2 
+    remove(term1, term2)
+
+    # the psychrometric constant (kPa/Celcius) 
+    gamma_kPadegC <- (0.00163 * Pa_kPa) / Le_MJKg 
+
+    # Taylor calculation 
+    term1 <- delta_kPadegC / (delta_kPadegC + gamma_kPadegC)
+    term2 <- Energy_MJm2day / Le_MJKg
+    taylor_mmday <- p_alpha * term1 * term2 
+    
+    remove(term1, term2)
+    return(taylor_mmday)
+}
+
+#  ---------------- calibration
+# for calibration we split the training data into 70% / 30% sets 
+# we find the correction factor using the 70% set and evaluate it using the 30% 
+# split datainto train, valid 
+
+set.seed(1915) # 1915: Frank Sinatra birthday 
+dftrain$index <- 1:dim(dftrain)[1]
+calibration_set <- slice_sample(dftrain, prop = 0.7)
+j1 <- which(dftrain$index %in% calibration_set$index)
+j1 <- dftrain$index[j1] 
+validation_set <-  dftrain |> filter(!index %in% j1) 
+
+# using correction_coefficient = 1.26, estimating the daily ET for the validation
+# data will result it NMAE equal to 53% 
+# setting correction_coefficient = 0.97 will result in a validation NMAE of 
+# 45%. 
+</code></pre>
+
+

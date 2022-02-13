@@ -56,7 +56,8 @@ section p {
 
 #data_and_button,
 #inputvar_and_button,
-#hyperparameter_and_button {
+#hyperparameter_and_button,
+#ETequations_and_button {
   position: relative;
   /* text-align: center; */
   display: flex;
@@ -66,7 +67,8 @@ section p {
 
 #data_and_button button,
 #inputvar_and_button button,
-#hyperparameter_and_button button {
+#hyperparameter_and_button button,
+#ETequations_and_button  button {
   background-color: transparent;
   border-color: transparent;
   /* border: 0; */
@@ -81,7 +83,8 @@ section p {
 }
 
 /* codes hyperparams of each model */
-#codes_hyperparameter pre {
+#codes_hyperparameter pre, 
+#ETequations_Rcode pre {
   display: none;
 }
 
